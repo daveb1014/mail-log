@@ -40,15 +40,10 @@ class MailLogServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'mail-log');
         $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
 
-        // Fix for Laravel <11 where publishesMigrations is not available
         $migrationsPath = [
             __DIR__.'/../../database/migrations' => database_path('migrations'),
         ];
-        if (method_exists($this, 'publishesMigrations')) {
-            $this->publishesMigrations($migrationsPath, 'mail-log-migrations');
-        } else {
-            $this->publishes($migrationsPath, 'mail-log-migrations');
-        }
+        $this->publishesMigrations($migrationsPath, 'mail-log-migrations');
 
         $this->publishes([
             __DIR__.'/../../config/mail-log.php' => config_path('mail-log.php'),

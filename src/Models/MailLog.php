@@ -2,6 +2,7 @@
 
 namespace GearboxSolutions\MailLog\Models;
 
+use GearboxSolutions\MailLog\Database\Factories\MailLogFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,7 +21,7 @@ class MailLog extends Model
 
     protected static function newFactory()
     {
-        return \GearboxSolutions\MailLog\Database\Factories\MailLogFactory::new();
+        return MailLogFactory::new();
     }
 
     protected $guarded = [
