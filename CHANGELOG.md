@@ -2,6 +2,10 @@
 
 All notable changes to `:package_name` will be documented in this file.
 
+## v0.0.6 - 2026-06-22
+
+Dropped Laravel 10 and 11, dependency updates.
+
 ## 0.0.5 - 2025-07-03
 
 ### What's Changed
