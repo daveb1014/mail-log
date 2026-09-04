@@ -31,5 +31,8 @@
     "devDependencies": {
         "@gearbox-solutions/eslint-config-gbx": "^2.0.6",
         "vite-plugin-vue-devtools": "^7.7.2"
+    },
+    "allowScripts": {
+        "esbuild@0.25.12": true
     }
 }

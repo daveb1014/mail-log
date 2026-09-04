@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import Mail from "@/Types/Mail";
-import { Card, Tag } from "primevue";
+import { Card, Tag, Button } from "primevue";
 import { PropType } from "vue";
+import { Link } from "@inertiajs/vue3";
+import Toast from "primevue/toast";
+import { useToast } from "primevue/usetoast";
 import dayjs from "dayjs";
+
+const toast = useToast();
 
 // Define props for the email data
 defineProps({
@@ -11,9 +16,17 @@ defineProps({
         required: true,
     },
 });
+
+const confirmResend = (event: MouseEvent) => {
+    if (!confirm('Are you sure you want to resend this email?')) {
+        event.preventDefault();
+    }
+};
 </script>
 
 <template>
+    <Toast />
+
     <div class="h-full p-2">
         <Card
             class="min-h-full"
@@ -46,11 +59,37 @@ defineProps({
                                     {{ mail.from_name ? `${mail.from_name} <${mail.from_email}>` : mail.from_email }}
                                 </p>
                             </div>
-                            <Tag
-                                :severity="mail.status === 'success' ? 'success' : 'danger'"
-                                :value="mail.status"
-                                rounded
-                            />
+                            <div class="space-x-2">
+                                <Tag
+                                    :severity="mail.status === 'success' ? 'success' : 'danger'"
+                                    :value="mail.status"
+                                    rounded
+                                    class="align-middle"
+                                />
+                                <!-- Re-send email -->
+                                <Link
+                                    :href="route('mail.resend', { id: mail.id })"
+                                    method="post"
+                                    as="button"
+                                    @click="confirmResend"
+                                    :onSuccess="() => toast.add({
+                                        severity: 'success',
+                                        summary: 'Email re-sent',
+                                        detail: 'The email was successfully re-sent.',
+                                        life: 5000
+                                    })"
+                                    :onError="() => toast.add({
+                                        severity: 'error',
+                                        summary: 'Resend failed',
+                                        detail: 'The email could not be re-sent.',
+                                        life: 5000
+                                    })"
+                                >
+                                    <Button
+                                        label="Resend"
+                                    />
+                                </Link>
+                            </div>
                         </div>
                     </div>
 

@@ -29,14 +29,16 @@
         @inertiaHead
 
         <!-- PWA -->
-        <link rel="manifest" href="/mail-log/build/manifest.json" type="application/manifest+json"/>
+        <!-- DB 03092026 -->
+        <!-- <link rel="manifest" href="/mail-log/build/manifest.json" type="application/manifest+json"/> -->
         <meta name="theme-color" content="#111827">
 
         <!-- Favicon -->
         <link rel="apple-touch-icon" sizes="180x180" href="/mail-log/favicons/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/mail-log/favicons/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/mail-log/favicons/favicon-16x16.png">
-        <link rel="manifest" href="/mail-log/favicons/site.webmanifest">
+        <!-- DB 03092026 -->
+        <!-- <link rel="manifest" href="/mail-log/favicons/site.webmanifest"> -->
         <link rel="mask-icon" href="/mail-log/favicons/safari-pinned-tab.svg" color="#5bbad5">
         <link rel="shortcut icon" href="/mail-log/favicons/favicon.ico">
         <meta name="msapplication-TileColor" content="#da532c">
