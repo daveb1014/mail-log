@@ -2,12 +2,13 @@
 
 use GearboxSolutions\MailLog\Http\Controllers\AssetController;
 use GearboxSolutions\MailLog\Http\Controllers\MailController;
+use GearboxSolutions\MailLog\Middleware\HandleInertiaRequests;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => 'mail-log',
     'middleware' => array_merge([
-        \GearboxSolutions\MailLog\Middleware\HandleInertiaRequests::class,
+        HandleInertiaRequests::class,
     ], config('mail-log.middleware', [])),
 ], function () {
 

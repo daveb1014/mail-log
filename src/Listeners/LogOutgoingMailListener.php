@@ -5,6 +5,7 @@ namespace GearboxSolutions\MailLog\Listeners;
 use GearboxSolutions\MailLog\Models\MailLog;
 use Illuminate\Mail\Events\MessageSending;
 use Illuminate\Support\Str;
+use Symfony\Component\Mime\Address;
 
 class LogOutgoingMailListener
 {
@@ -72,7 +73,7 @@ class LogOutgoingMailListener
 
         return collect($addresses)
             ->map(function ($eachAddress, $index) {
-                /** @var \Symfony\Component\Mime\Address $eachAddress */
+                /** @var Address $eachAddress */
                 $name = $eachAddress->getName();
                 $address = $eachAddress->getAddress();
 
